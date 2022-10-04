@@ -52,3 +52,9 @@ Vincule dinamicamente um ou mais atributos.
 <a :href="link">
 ~~~
 
+**v-html**
+Permite que a interpolação com a excução dastags HTML.
+~~~HTML
+<p v-html="outputGoal()"></p>
+~~~
+

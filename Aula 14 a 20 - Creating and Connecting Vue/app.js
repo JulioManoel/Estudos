@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data(){
         return{
             courseGoalA: 'Oiiii',
-            courseGoalB: 'Tchauuu',
+            courseGoalB: '<h2>Tchauuu</h2>',
             vueLink: 'https://vuejs.org/'
         }
     },
