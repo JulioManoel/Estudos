@@ -34,7 +34,7 @@ data(){
 Referência propriedades do Vue a um texto do HTML, também pode-se executar funções JavaScript dentro delas.
 ~~~HTML
 <p>{{value}}</p>
-<p>{{value()}}</p> <!--Mal Pratica utilizar um v-on:click ou algo do genero-->
+<p>{{value()}}</p> <!--Mal Pratica utilize um v-on:click ou algo do genero-->
 ~~~
 
 
@@ -52,18 +52,19 @@ methods: {
 
 
 **v-bind**
-Vincule dinamicamente um ou mais atributos.
+Vincule dinamicamente um ou mais atributos do HTML.
 ~~~HTML
 <img v-bind:scr="imageScr">
 <img :scr="imageScr">
 <a v-bind:href="link">
 <a :href="link">
 <input type="text" v-bind:value="name" v-on:input="setName($event, 'Schwarzmüller')">
+<div :class="{demo: true, active: boxASelected}" @click="boxSelected('A')"></div>
 ~~~
 
 
 **v-html**
-Permite que a interpolação com a excução dastags HTML.
+Permite que a interpolação com a excução das tags HTML.
 ~~~HTML
 <p v-html="outputGoal()"></p>
 ~~~
@@ -158,10 +159,14 @@ Vue.createApp({
       }
       return this.name + ' ' + 'Schwazmuller'
     }
+    boxAClasses(){
+      return {active: this.boxASelected}
+    }
   }
 ~~~
 ~~~HTML
 <p>Your Name: {{ fullname }}</p>
+<p :class="boxAClasses">Troca Classe e Estilo</p>
 ~~~
 
 **Watch (Obeservador)**
