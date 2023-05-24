@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            body{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="js/three.js"></script>
+        <script>
+            // Cria uma Cena 
+            const scene = new THREE.Scene();
+            // Cria uma Perspective
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            // Cria Objeto para Rederizar
+            const renderer = new THREE.WebGLRenderer();
+
+            // Define o tamanho e qualidade da janela
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            //Adiciona o renderer.domElement ao html
+            document.body.appendChild(renderer.domElement);
+
+            // Cria um cubo
+            const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+            // Define o materia
+            const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            // Insere materia no objeto
+            const cube = new THREE.Mesh( geometry, material );
+            // Coloca objeto na cena
+            scene.add(cube);
+
+            // Para mover para fora
+            camera.position.z = 5;
+
+            // Renderizar a cena
+            function animate(){
+                // Anima a cada frame da tela ou seja 60Hz dependendo da tela
+                requestAnimationFrame(animate);
+                
+                // Para animar o cubo
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+
+                // Rederiza a Cena
+                renderer.render(scene, camera);
+            }
+            animate(); // Chama função animação
+
+        </script>
+    </body>
+</html>
